@@ -1,0 +1,40 @@
+using System;  
+
+class Program  
+{  
+    static void Main()  
+    {  
+        double number = 456.25784; // You can change this number to test with different values  
+
+        // Convert to string  
+        string strNumber = number.ToString();  
+
+        // Split the string into whole number and fractional parts  
+        string[] parts = strNumber.Split('.');  
+
+        // Calculate the number of digits before the decimal point  
+        int digitsBeforeRadix = parts[0].Length;  
+
+        // Calculate the number of digits after the decimal point (if exists)  
+        int digitsAfterRadix = parts.Length > 1 ? parts[1].Length : 0;  
+
+        // Total digits in the input number  
+        int totalDigits = digitsBeforeRadix + digitsAfterRadix;  
+
+        // Remove the decimal point and convert the whole number part to integer (optional)  
+        string wholeNumberWithoutDecimal = strNumber.Replace(".", "");  
+
+        // Optionally convert it back to long to handle larger numbers safely  
+        long intNumber = long.Parse(wholeNumberWithoutDecimal);  
+
+        // Print results  
+        Console.WriteLine($"Original Number: {number}");  
+        Console.WriteLine($"Whole Number Part: {parts[0]}");  
+        Console.WriteLine($"Fractional Part: { (parts.Length > 1 ? parts[1] : "None")}");  
+        Console.WriteLine($"Digits Before the Decimal Point: {digitsBeforeRadix}");  
+        Console.WriteLine($"Digits After the Decimal Point: {digitsAfterRadix}");  
+        Console.WriteLine($"Total Digits in the Input: {totalDigits}");  
+        Console.WriteLine($"Whole Number Without Decimal: {wholeNumberWithoutDecimal}");  
+        Console.WriteLine($"Integer Value: {intNumber}");  
+    }  
+}
